@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Karl.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -40,10 +40,10 @@ def main():
     # UN-comment tests as you work the problems.
     ###########################################################################
 
-    # run_test_init()
-    # run_test_append_string()
-    # run_test_double()
-    # run_test_shrink()
+    run_test_init()
+    run_test_append_string()
+    run_test_double()
+    run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
     # run_test_steal()
@@ -64,6 +64,11 @@ class Box(object):
     """
 
     def __init__(self, contents, volume):
+        self.volume=volume
+        if len(contents)<=volume:
+            self.contents=contents
+        else:
+            self.contents=''
         """
         What comes in:
           -- self
@@ -95,7 +100,7 @@ class Box(object):
           :type volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -105,6 +110,18 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def append_string(self, additional_contents):
+        space = self.volume - len(self.contents)
+        number_of_characters_to_append = min(space,len(additional_contents))
+        stuff_to_add = ''
+        for k in range(number_of_characters_to_append):
+            stuff_to_add = stuff_to_add + additional_contents[k]
+        self.contents = self.contents + stuff_to_add
+        stuff_to_return = ''
+        for k in range(number_of_characters_to_append,
+                       len(additional_contents)):
+            stuff_to_return = stuff_to_return + additional_contents[k]
+        return stuff_to_return
+
         """
         What comes in:
           -- self
@@ -136,7 +153,7 @@ class Box(object):
           :type additional_contents: str
         """
         # ---------------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -160,6 +177,9 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def double(self):
+        s=self.append_string(self.contents)
+        return s
+
         """
         What comes in:
           -- self
@@ -193,7 +213,7 @@ class Box(object):
           #                       contents that did NOT fit]
         """
         # ---------------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -207,6 +227,20 @@ class Box(object):
         #######################################################################
 
     def shrink(self, new_volume):
+        if len(self.contents)<=new_volume:
+            pass
+        else:
+            g=self.contents
+            h=''
+            l=''
+            for k in range(new_volume):
+                h=h+g[k]
+            self.contents=h
+            for k in range(new_volume,self.volume):
+                l=l+g[k]
+        self.volume=new_volume
+        return l
+
         """
         What comes in:
           -- self

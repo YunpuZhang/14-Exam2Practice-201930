@@ -3,8 +3,8 @@ PRACTICE Exam 2, practice_problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Karl.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -42,9 +42,29 @@ def main():
 ###############################################################################
 
 def run_test_practice_problem2a():
+    # Test1
+    Expected = [3, 3, 3]
+    answer =practice_problem2a([2,2,2],1)
+    print('Expected and result are',Expected,answer)
+
+    # Test2
+    Expected = [3, 4, 5]
+    answer = practice_problem2a([1, 2, 3], 2)
+    print('Expected and result are', Expected, answer)
+
+    # Test3
+    Expected = [10, 13, 17]
+    answer = practice_problem2a([4, 7, 11], 6)
+    print('Expected and result are', Expected, answer)
+
+    # Test4
+    Expected = [20, 15, 10]
+    answer = practice_problem2a([10, 5, 0], 10)
+
+    print('Expected and result are', Expected, answer)
     """ Tests the   practice_problem2a  function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  practice_problem2a  function defined below.
     #   Include at least **   4    ** tests that, taken together,
     #   would form a    ** REASONABLY GOOD test set **
@@ -61,6 +81,11 @@ def run_test_practice_problem2a():
 
 
 def practice_problem2a(sequence, delta):
+    for k in range(len(sequence)):
+        sequence[k]=sequence[k]+delta
+    return sequence
+
+
     """
     What comes in:
       -- A sequence of integers, e.g. ([2, 10, 5, -20, 8])
@@ -79,7 +104,7 @@ def practice_problem2a(sequence, delta):
       :type delta:    int
     """
     ###########################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     WRITE THE TESTS FIRST (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -168,6 +193,14 @@ def run_test_practice_problem2b():
 
 
 def practice_problem2b(sequence):
+    j=''
+    for k in range(len(sequence)):
+        if len(sequence[k])!=0:
+            m=''
+            m=sequence[k]
+            j=j+m[0]
+    return  j
+
     """
     What comes in:
       -- A sequence of strings, e.g. ('hello', 'Bye', 'ok joe')
