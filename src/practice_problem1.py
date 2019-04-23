@@ -124,6 +124,11 @@ class Box(object):
                        len(additional_contents)):
             stuff_to_return = stuff_to_return + additional_contents[k]
         return stuff_to_return
+        #self.contents=self.contents+additional_contents[0:(self.volume-len(self.contents))]
+        #if (self.volume-len(self.contents))<len(additional_contents):
+          #  return additional_contents[(self.volume-len(self.contents)):len(additional_contents)]
+        #else:
+         #   return ''
 
         """
         What comes in:
